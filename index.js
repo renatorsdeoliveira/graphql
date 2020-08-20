@@ -75,7 +75,11 @@ const resolvers = {
             }
         },
         numeroMegaSena(){
-            return [1,3,4,6,7]
+            // return [1,3,4,6,7]
+            const crescente  = (a, b) => a - b
+            return Array(6).fill(0)
+            .map(n => parseInt(Math.random() * 60 + 1))
+            .sort(crescente)
         }
     }
 
