@@ -2,6 +2,13 @@ const { ApolloServer, gql } = require ('apollo-server')
 
 const typeDefs = gql `
     scalar Date
+    type Produto{
+        nome: String!
+        preco: Float!
+        desconto: Float
+        produtoComDesconto: Float
+    }
+    
     type Usuario {
         id: ID,
         nome: String
@@ -17,6 +24,7 @@ const typeDefs = gql `
         ola: String
         horaAtual: Date
         usauario: Usuario
+        produtoEmDesaque: Produto
    
     }
 
@@ -24,6 +32,15 @@ const typeDefs = gql `
 `
 
 const resolvers = {
+    Produto: {
+        produtoComDesconto(pa){
+            if(pa.desconto){
+                return pa.preco * (1 - pa.desconto)
+            }else {
+                return p.preco
+            }
+        }
+    },
     Usuario: {
        salario(u){
            return u.salario_final + 1
@@ -49,6 +66,13 @@ const resolvers = {
                salario_final: 3.500,
                vip: true
            }
+        },
+        produtoEmDesaque(){
+            return {
+                nome: 'Renato',
+                preco: 10,
+                desconto: 2,
+            }
         }
     }
 
