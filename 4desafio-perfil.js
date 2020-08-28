@@ -11,7 +11,6 @@ const perfil = [{
 
 
 
-
 const typeDefs = gql `
     scalar Date
 
