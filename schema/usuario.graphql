@@ -1,4 +1,17 @@
 
+
+type Perfil {
+    id: ID
+    nome: String
+}
+
+enum usuarioStatus{
+    ATIVO
+    INATIVO
+    BOQUEADO
+}
+
+
 type Usuario {
     id: ID
     nome: String
@@ -9,8 +22,5 @@ type Usuario {
     vip: Boolean
     bla: String
     perfil: Perfil
-}
-type Perfil {
-    id: ID
-    nome: String
+    status: usuarioStatus
 }
